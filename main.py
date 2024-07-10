@@ -9,9 +9,7 @@ with st.sidebar:
     st.markdown("[如何获取OpenAI API密钥？](https://openai.com/index/chatgpt/)")
 #初始聊天界面：
 if "memory" not in st.session_state:
-    model = ChatOpenAI(model='gpt-4o',
-                      api_key=key)
-    #openai_api_base="https://api.aigc369.com/v1"
+    model = ChatOpenAI(model='gpt-3.5-turbo', openai_api_key=key, openai_api_base="https://api.aigc369.com/v1")
     st.session_state["memory"]=ConversationSummaryBufferMemory(
         llm=model,max_token_limit=2000,return_messages=True
     )
