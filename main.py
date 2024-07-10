@@ -22,7 +22,7 @@ for message in st.session_state["message"]:
 ##询问开始
 prompt=st.chat_input("您想了解一些什么？思颖来告诉你")
 if prompt:
-    if openai_key == '':
+    if key == '':
         st.info("请输入OpenAI API密钥")
         st.stop()
     else:
@@ -30,6 +30,6 @@ if prompt:
         st.session_state["message"].append({"role":"human","context":prompt})
 ##问题处理
         with st.spinner("👩思颖正在思考哦，请稍等"):
-            result=get_gptresponse(prompt,st.session_state["memory"],openai_key)
+            result=get_gptresponse(prompt,st.session_state["memory"],key)
         st.chat_message('ai').write(result)
         st.session_state["message"].append({"role":"ai","context":result})
